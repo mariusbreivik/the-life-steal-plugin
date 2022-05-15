@@ -1,0 +1,16 @@
+name: the-life-steal-plugin
+version: '${project.version}'
+main: no.breaks.tlsp.TheLifeStealPlugin
+api-version: 1.18
+authors: [ Marius ]
+description: The life steal plugin
+
+commands:
+  lsp-revive:
+    description: revive a killed player
+    usage: /<command>
+    aliases: [lsp-revive, r]
+  lsp-version:
+    description: print plugin version
+    usage: /<command>
+    aliases: [ lsp-version, v ]
