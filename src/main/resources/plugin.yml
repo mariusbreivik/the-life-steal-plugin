@@ -8,7 +8,7 @@ description: The life steal plugin
 commands:
   lsp-revive:
     description: revive a killed player
-    usage: /<command>
+    usage: /<command> <player>
     aliases: [lsp-revive, r]
   lsp-version:
     description: print plugin version

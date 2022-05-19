@@ -6,7 +6,9 @@ on:
 
 jobs:
   build:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
+
     steps:
       - name: Output the branch name
         id: released_tag
@@ -27,7 +29,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
           cache: 'maven'
       - name: Build with Maven
         run: mvn -B package --file pom.xml

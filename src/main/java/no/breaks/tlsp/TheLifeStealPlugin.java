@@ -25,7 +25,7 @@ public final class TheLifeStealPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this );
 
         // commands
-        getServer().getPluginCommand("lsp-revive").setExecutor(new ReviveCommandExecutor());
+        getServer().getPluginCommand("lsp-revive").setExecutor(new ReviveCommandExecutor(this));
         getServer().getPluginCommand("lsp-version").setExecutor(new VersionCommandExecutor(this));
     }
 
