@@ -1,0 +1,40 @@
+name: Create Github Release
+
+on:
+  create:
+    tags:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the branch name
+        id: released_tag
+        run: |
+          ref=${{ github.ref }}
+          tag=$(echo "$ref" |  cut -d '/' -f 3)
+          echo "::set-output name=tag::$tag"
+
+      - name: Step ting
+        run: echo ${{ steps.released_tag.outputs.tag }}
+
+      - name: Checkout tag
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.released_tag.outputs.tag }}
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+        
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+              target/the-life-steal-plugin*.jar

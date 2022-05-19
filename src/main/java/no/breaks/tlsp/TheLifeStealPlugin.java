@@ -20,6 +20,7 @@ public final class TheLifeStealPlugin extends JavaPlugin {
     }
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         // listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this );
 
