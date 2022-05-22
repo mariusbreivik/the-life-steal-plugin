@@ -3,7 +3,7 @@ name: Build and perform release with maven
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
